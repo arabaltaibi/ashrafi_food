@@ -1,0 +1,350 @@
+[
+ {
+  "default": "0",
+  "dt": "Accounts Settings",
+  "fieldname": "enable_promotional_discount",
+  "fieldtype": "Check",
+  "insert_after": "allow_multi_currency_invoices_against_single_party_account",
+  "label": "Enable Promotional Discount"
+ },
+ {
+  "default": "0",
+  "dt": "Accounts Settings",
+  "fieldname": "enable_product_wise_discount",
+  "fieldtype": "Check",
+  "insert_after": "enable_promotional_discount",
+  "label": "Enable Product Wise Discount"
+ },
+ {
+  "dt": "Journal Entry",
+  "fieldname": "reversal_entry_link",
+  "fieldtype": "Data",
+  "insert_after": "process_deferred_accounting",
+  "label": "Reversal entry link"
+ },
+ {
+  "dt": "Journal Entry",
+  "fieldname": "payment_terms_template",
+  "fieldtype": "Data",
+  "insert_after": "reversal_entry_link",
+  "label": "payment_terms_template"
+ },
+ {
+  "dt": "Journal Entry",
+  "fieldname": "grand_total",
+  "fieldtype": "Data",
+  "insert_after": "payment_terms_template",
+  "label": "grand_total"
+ },
+ {
+  "dt": "Journal Entry",
+  "fieldname": "outstanding_amount",
+  "fieldtype": "Data",
+  "insert_after": "grand_total",
+  "label": "outstanding_amount"
+ },
+ {
+  "dt": "Journal Entry",
+  "fieldname": "entry_type",
+  "fieldtype": "Link",
+  "insert_after": "outstanding_amount",
+  "label": "Entry Type",
+  "options": "Entry Type"
+ },
+ {
+  "dt": "Payment Entry",
+  "fieldname": "bill_type",
+  "fieldtype": "Select",
+  "insert_after": "section_break_60",
+  "label": "Bill Type",
+  "options": "\nCurrent Bill\nRecovery\nAgainst Cheque\nAdvance payment\nOthers"
+ },
+ {
+  "dt": "Purchase Invoice",
+  "fieldname": "gst_no",
+  "fieldtype": "Data",
+  "insert_after": "tax_withheld_vouchers",
+  "label": "GST No"
+ },
+ {
+  "allow_on_submit": 1,
+  "dt": "Sales Invoice",
+  "fieldname": "gross_total",
+  "fieldtype": "Currency",
+  "insert_after": "is_cash_or_non_trade_discount",
+  "label": "Gross Total"
+ },
+ {
+  "dt": "Sales Invoice",
+  "fieldname": "export_section",
+  "fieldtype": "Section Break",
+  "insert_after": "gross_total",
+  "label": "Export"
+ },
+ {
+  "dt": "Sales Invoice",
+  "fieldname": "fi_number",
+  "fieldtype": "Data",
+  "insert_after": "export_section",
+  "label": "F.I Number",
+  "read_only": 1
+ },
+ {
+  "dt": "Sales Invoice",
+  "fieldname": "column_break_24",
+  "fieldtype": "Column Break",
+  "insert_after": "fi_number"
+ },
+ {
+  "dt": "Sales Invoice",
+  "fieldname": "loading_port",
+  "fieldtype": "Data",
+  "insert_after": "column_break_24",
+  "label": "Loading Port",
+  "read_only": 1
+ },
+ {
+  "dt": "Sales Invoice",
+  "fieldname": "column_break_26",
+  "fieldtype": "Column Break",
+  "insert_after": "loading_port"
+ },
+ {
+  "dt": "Sales Invoice",
+  "fieldname": "discharge_port",
+  "fieldtype": "Data",
+  "insert_after": "column_break_26",
+  "label": "Discharge Port",
+  "read_only": 1
+ },
+ {
+  "allow_on_submit": 1,
+  "dt": "Sales Invoice Item",
+  "fieldname": "total_discount",
+  "fieldtype": "Currency",
+  "insert_after": "grant_commission",
+  "label": "Total Discount"
+ },
+ {
+  "dt": "Sales Invoice Item",
+  "fieldname": "l_discount",
+  "fieldtype": "Currency",
+  "insert_after": "total_discount",
+  "label": "Discount Per Unit"
+ },
+ {
+  "dt": "Supplier",
+  "fieldname": "company",
+  "fieldtype": "Link",
+  "insert_after": "supplier_primary_address",
+  "label": "Company",
+  "options": "Company"
+ },
+ {
+  "dt": "Supplier",
+  "fieldname": "gst",
+  "fieldtype": "Data",
+  "insert_after": "naming_series",
+  "label": "GST"
+ },
+ {
+  "dt": "Project",
+  "fieldname": "latitude",
+  "fieldtype": "Data",
+  "insert_after": "naming_series",
+  "label": "Latitude"
+ },
+ {
+  "dt": "Project",
+  "fieldname": "longitude",
+  "fieldtype": "Data",
+  "insert_after": "latitude",
+  "label": "Longitude"
+ },
+ {
+  "dt": "Project",
+  "fieldname": "minimum_checkout_distance",
+  "fieldtype": "Data",
+  "insert_after": "longitude",
+  "label": "Minimum Checkout Distance"
+ },
+ {
+  "dt": "Customer",
+  "fieldname": "address_link",
+  "fieldtype": "Link",
+  "insert_after": "customer_primary_address",
+  "label": "Address Link",
+  "options": "Address"
+ },
+ {
+  "default": "0",
+  "dt": "Customer",
+  "fieldname": "allow_credit",
+  "fieldtype": "Check",
+  "insert_after": "address_link",
+  "label": "Allow Credit"
+ },
+ {
+  "dt": "Customer",
+  "fieldname": "company",
+  "fieldtype": "Link",
+  "insert_after": "allow_credit",
+  "label": "Company",
+  "options": "Company"
+ },
+ {
+  "dt": "Sales Order",
+  "fieldname": "export_section",
+  "fieldtype": "Section Break",
+  "insert_after": "dimension_col_break",
+  "label": "Export"
+ },
+ {
+  "dt": "Sales Order",
+  "fieldname": "fi_number",
+  "fieldtype": "Data",
+  "insert_after": "export_section",
+  "label": "F.I Number"
+ },
+ {
+  "dt": "Sales Order",
+  "fieldname": "column_break_19",
+  "fieldtype": "Column Break",
+  "insert_after": "fi_number"
+ },
+ {
+  "dt": "Sales Order",
+  "fieldname": "loading_port",
+  "fieldtype": "Data",
+  "insert_after": "column_break_19",
+  "label": "Loading Port"
+ },
+ {
+  "dt": "Delivery Note",
+  "fieldname": "export_section",
+  "fieldtype": "Section Break",
+  "insert_after": "dimension_col_break",
+  "label": "Export"
+ },
+ {
+  "dt": "Delivery Note",
+  "fieldname": "data_18",
+  "fieldtype": "Column Break",
+  "insert_after": "export_section"
+ },
+ {
+  "dt": "Delivery Note",
+  "fieldname": "column_break_20",
+  "fieldtype": "Column Break",
+  "insert_after": "data_18"
+ },
+ {
+  "dt": "Delivery Note",
+  "fieldname": "discharge_port",
+  "fieldtype": "Data",
+  "insert_after": "column_break_20",
+  "label": "Discharge Port"
+ },
+ {
+  "dt": "Delivery Note",
+  "fieldname": "loading_port",
+  "fieldtype": "Data",
+  "insert_after": "discharge_port",
+  "label": "Loading Port",
+  "read_only": 1
+ },
+ {
+  "dt": "Delivery Note",
+  "fieldname": "fi_number",
+  "fieldtype": "Data",
+  "insert_after": "loading_port",
+  "label": "F.I Number",
+  "read_only": 1
+ },
+ {
+  "default": "0",
+  "dt": "Item",
+  "fieldname": "allow_for_free_promotional_item",
+  "fieldtype": "Check",
+  "insert_after": "grant_commission",
+  "label": "Allow for Free Promotional Item"
+ },
+ {
+  "dt": "Item",
+  "fieldname": "company",
+  "fieldtype": "Link",
+  "insert_after": "allow_for_free_promotional_item",
+  "label": "Company",
+  "options": "Company"
+ },
+ {
+  "default": "0",
+  "dt": "Item",
+  "fieldname": "mobile_show_item",
+  "fieldtype": "Check",
+  "insert_after": "company",
+  "label": "Mobile Show Item"
+ },
+ {
+  "default": "__user",
+  "dt": "Material Request",
+  "fieldname": "requested_by",
+  "fieldtype": "Link",
+  "insert_after": "transfer_status",
+  "label": "Requested By",
+  "options": "User",
+  "read_only": 1
+ },
+ {
+  "default": "__user",
+  "dt": "Material Request",
+  "fieldname": "owner_name",
+  "fieldtype": "Link",
+  "in_list_view": 1,
+  "insert_after": "requested_by",
+  "label": "Owner Name",
+  "options": "User"
+ },
+ {
+  "dt": "Warehouse",
+  "fieldname": "vehicle_no",
+  "fieldtype": "Data",
+  "insert_after": "default_in_transit_warehouse",
+  "label": "Vehicle No"
+ },
+ {
+  "dt": "Warehouse",
+  "fieldname": "distributor_invoice_portion_section",
+  "fieldtype": "Section Break",
+  "insert_after": "vehicle_no",
+  "label": "Distributor Invoice Portion"
+ },
+ {
+  "dt": "Warehouse",
+  "fieldname": "cb9",
+  "fieldtype": "Column Break",
+  "insert_after": "distributor_invoice_portion_section"
+ },
+ {
+  "dt": "Warehouse",
+  "fieldname": "cash_account",
+  "fieldtype": "Link",
+  "insert_after": "cb9",
+  "label": "Cash Account",
+  "options": "Mode of Payment"
+ },
+ {
+  "dt": "Warehouse",
+  "fieldname": "column_break_5",
+  "fieldtype": "Column Break",
+  "insert_after": "cash_account"
+ },
+ {
+  "dt": "Warehouse",
+  "fieldname": "bank_account",
+  "fieldtype": "Link",
+  "insert_after": "column_break_5",
+  "label": "Bank Account",
+  "options": "Mode of Payment"
+ }
+]

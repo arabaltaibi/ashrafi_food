@@ -144,3 +144,5 @@ fixtures = [
 	{"dt": "Report",          "filters": [["name", "in", AF_REPORTS]]},
 	{"dt": "Print Format",    "filters": [["name", "in", AF_PRINT_FORMATS]]},
 ]
+# re-create v13 core-edit fields as Custom Fields on newer versions
+after_migrate = ["ashrafi_food.setup.core_fields.sync"]
