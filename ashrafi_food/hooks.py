@@ -95,10 +95,10 @@ AF_PROPERTY_SETTER_DOCTYPES = [
 ]
 
 # fields created by the Accounting Dimension "Container" (managed by ERPNext, not exported)
-AF_DIMENSION_FIELDS = ["container"]
+AF_DIMENSION_FIELDS = ["container", "hub_sync_id", "github_sync_id"]  # dimension + obsolete v13 sync fields
 
 # custom field names to skip (filled later if anything overlaps with hr_vfg)
-AF_EXCLUDE_CUSTOM_FIELDS = []
+AF_EXCLUDE_CUSTOM_FIELDS = ["Item-tax_code", "Sales Order-column_break_116"]  # duplicates of standard fields in v15
 
 AF_CLIENT_SCRIPTS = [
 	"Purchase Invoice-Form", "Master Shop Route-Form", "Shop Route-Form", "Sales Invoice-Form",
