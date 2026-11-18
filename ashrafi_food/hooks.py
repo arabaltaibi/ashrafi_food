@@ -146,3 +146,30 @@ fixtures = [
 ]
 # re-create v13 core-edit fields as Custom Fields on newer versions
 after_migrate = ["ashrafi_food.setup.core_fields.sync"]
+
+# ===== Ashrafi customizations that used to live inside ERPNext v13 core files =====
+# (each handler checks the ERPNext version and only acts on v14+)
+doctype_js = {
+    "Payment Entry": "public/js/payment_entry.js",
+}
+
+doc_events = {
+    "Sales Invoice": {
+        "on_submit": "ashrafi_food.overrides.sales_invoice.on_submit",
+        "before_cancel": "ashrafi_food.overrides.sales_invoice.before_cancel",
+    },
+    "Payment Entry": {
+        "on_submit": "ashrafi_food.overrides.payment_entry.on_submit",
+    },
+    "Customer": {
+        "on_update": "ashrafi_food.overrides.customer.on_update",
+    },
+    "Material Request": {
+        "validate": "ashrafi_food.overrides.material_request.validate",
+    },
+}
+
+override_whitelisted_methods = {
+    "erpnext.accounts.doctype.discounted_invoice.discounted_invoice.your_custom_method_to_get_unpaid_invoices": "ashrafi_food.api.get_unpaid_invoices",
+    "erpnext.accounts.doctype.payment_entry.payment_entry.create_reversal": "ashrafi_food.overrides.payment_entry.create_reversal",
+}
