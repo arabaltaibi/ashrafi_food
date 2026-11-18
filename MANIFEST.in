@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ashrafi_food *.css
+recursive-include ashrafi_food *.csv
+recursive-include ashrafi_food *.html
+recursive-include ashrafi_food *.ico
+recursive-include ashrafi_food *.js
+recursive-include ashrafi_food *.json
+recursive-include ashrafi_food *.md
+recursive-include ashrafi_food *.png
+recursive-include ashrafi_food *.py
+recursive-include ashrafi_food *.svg
+recursive-include ashrafi_food *.txt
+recursive-exclude ashrafi_food *.pyc
