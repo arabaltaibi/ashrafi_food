@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "creation": "2022-04-19 13:59:07.230132",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "column_break_3",
+  "item_name",
+  "column_break_5",
+  "source_warehouse",
+  "column_break_7",
+  "qty",
+  "section_break_8",
+  "is_scrap_item",
+  "scrap_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_scrap_item",
+   "fieldtype": "Check",
+   "label": "Is Scrap Item"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "scrap_warehouse",
+   "fieldtype": "Link",
+   "label": "Scrap Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:10.774513",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Finished Good Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

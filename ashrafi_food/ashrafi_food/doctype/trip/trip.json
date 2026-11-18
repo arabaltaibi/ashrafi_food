@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-06 18:23:58.940456",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "area",
+  "salesman_name",
+  "column_break_3",
+  "van_no",
+  "supervisor_name",
+  "section_break_5",
+  "geolocation_6",
+  "total_km",
+  "section_break_8",
+  "route_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "label": "Area",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "salesman_name",
+   "fieldtype": "Link",
+   "label": "Salesman Name",
+   "options": "User"
+  },
+  {
+   "fieldname": "van_no",
+   "fieldtype": "Data",
+   "label": "Van No"
+  },
+  {
+   "fieldname": "supervisor_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "geolocation_6",
+   "fieldtype": "Geolocation"
+  },
+  {
+   "fieldname": "total_km",
+   "fieldtype": "Float",
+   "label": "Total Km"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "route_table",
+   "fieldtype": "Table",
+   "label": "Route Table",
+   "options": "Shop Route CT"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:12.896295",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Trip",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

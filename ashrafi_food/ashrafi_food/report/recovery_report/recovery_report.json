@@ -1,0 +1,37 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2023-05-08 16:46:04.273159",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "javascript": "",
+ "json": "{}",
+ "modified": "2026-11-18 14:20:14.000646",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Recovery Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\r\n    pe.name AS \"ID:Link/Payment Entry:220\",\r\n    pe.posting_date AS \"Posting Date:Date:100\",\r\n    pe.party_name AS \"Party:Data:100\",\r\n    co.primary_address AS \"Address:Data:220\",\r\n    per.bill_no AS \"Bill No.:Data:100\",\r\n    per.total_amount AS \"Bill Amount:Float:150\",\r\n    si.posting_date AS \"Bill Date:Date:200\",\r\n    pe.bill_type AS \"Bill:Data:150\",\r\n    co.territory AS \"Area:Link/Territory:220\",\r\n    per.allocated_amount AS \"Received Amount:Float:100\",\r\n    pe.mode_of_payment AS \"Mode Of Payment:Data:100\",\r\n    pe.reference_no AS \"Cheque#:Data:100\",\r\n    pe.reference_date AS \"Cheque Date:Date:100\",\r\n    per.outstanding_amount AS \"Balance Amount:Float:100\"\r\n    \r\n    \r\nFROM\r\n    `tabPayment Entry` AS pe\r\nLEFT JOIN\r\n    `tabPayment Entry Reference` AS per ON per.parent = pe.name\r\nLEFT JOIN\r\n    `tabCustomer` AS co ON co.name = pe.party_name\r\nLEFT JOIN\r\n    `tabSales Invoice` AS si ON si.name = per.reference_name\r\n    \r\n WHERE\r\n    pe.docstatus = 1\r\n    and pe.posting_date >= %(from_date)s and pe.posting_date <= %(to_date)s\r\n    and co.territory = %(territory)s\r\n    and pe.bill_type <> \"Current Bill\"\r\n   \r\n   \r\n\r\n",
+ "ref_doctype": "Payment Entry",
+ "reference_report": "Payment Entry",
+ "report_name": "Recovery Report",
+ "report_script": "",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Distributor Invoice"
+  }
+ ]
+}

@@ -1,0 +1,707 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DIST-.MM.-.####",
+ "creation": "2022-12-15 13:19:26.691682",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "salesman_details_section",
+  "sales_person",
+  "vehicle_no",
+  "column_break_2",
+  "sales_person_name",
+  "visti_number",
+  "column_break_5",
+  "warehouse",
+  "column_break_7",
+  "supervisor",
+  "section_break_2",
+  "date",
+  "mode_payment",
+  "is_cash_payment",
+  "col_break_5",
+  "customer_name",
+  "column_break_13",
+  "sales_type",
+  "column_break_15",
+  "bill_no",
+  "attach_image",
+  "customer_balance",
+  "address_section",
+  "customer_address",
+  "customer_mobile_no",
+  "column_break_8",
+  "customer_contact_person",
+  "contact_detail",
+  "area",
+  "items_section",
+  "items",
+  "promotional_discount_section",
+  "discount_applicable_qty",
+  "total_fl_weight",
+  "column_break_30",
+  "discount_applicable_amount",
+  "fl_disc",
+  "column_break_32",
+  "prom_disc",
+  "promo_weight",
+  "column_break_33",
+  "total_promotional_discount",
+  "total_section",
+  "total_quantity",
+  "column_break_16",
+  "total_line_discount",
+  "column_break_18",
+  "total_amount",
+  "column_break_20",
+  "net_total_amount",
+  "section_break_22",
+  "col_break_22",
+  "bill_picture",
+  "cb34",
+  "cash_payment",
+  "column_break_34",
+  "bank_payment",
+  "amended_from",
+  "mop",
+  "mode_of_payment",
+  "column_break_37",
+  "amount",
+  "cb39",
+  "distributor_payment",
+  "sec_bank",
+  "bank_mode_of_payment",
+  "column_break_43",
+  "bank_amount",
+  "cb42",
+  "cheque_no",
+  "section_break_47",
+  "payment",
+  "section_break_39",
+  "total_received_amount",
+  "column_break_40",
+  "total_allocated",
+  "column_break_42",
+  "total_balance",
+  "section_break_90",
+  "check_in",
+  "column_break_92",
+  "check_out",
+  "column_break_94",
+  "location",
+  "promotional_section",
+  "company",
+  "promoted_customer",
+  "no_of_free_items",
+  "p2_column",
+  "sales_invoice_ref",
+  "customer_group",
+  "free_fl_item",
+  "p3_column",
+  "shop_route",
+  "promo_fl_weight",
+  "srt",
+  "p4_column",
+  "promoted_product_added",
+  "chakki_item_added",
+  "fine_item_added"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "read_only_depends_on": "eval:frappe.user.has_role('Back Date Entry Allowed') != 1"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer Name",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Small Text",
+   "label": "Customer Address"
+  },
+  {
+   "fetch_from": "customer_name.customer_primary_contact",
+   "fieldname": "customer_contact_person",
+   "fieldtype": "Link",
+   "label": "Customer Contact Person",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "customer_balance",
+   "fieldtype": "Float",
+   "label": "Customer Balance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bill_no",
+   "fieldtype": "Data",
+   "label": "Bill No"
+  },
+  {
+   "fieldname": "bill_picture",
+   "fieldtype": "Attach Image",
+   "label": "Bill Picture"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "options": "Distribution Items"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Distributor Invoice",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address & Contact"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Sales",
+   "fieldname": "sales_type",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Sales Type",
+   "options": "Sales\nReturn",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_line_discount",
+   "fieldtype": "Currency",
+   "label": "Total Line Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "net_total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Net Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_22",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "sales_invoice_ref",
+   "fieldtype": "Link",
+   "label": "Sales Invoice Ref",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cash_payment == 1",
+   "fieldname": "mop",
+   "fieldtype": "Section Break",
+   "label": "Cash Payment"
+  },
+  {
+   "fieldname": "distributor_payment",
+   "fieldtype": "Table",
+   "mandatory_depends_on": "eval:doc.cash_payment == 1",
+   "options": "Distributor Payments"
+  },
+  {
+   "default": "__user",
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "label": "Sales Person ID",
+   "options": "User"
+  },
+  {
+   "fetch_from": "customer_name.territory",
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "label": "Area",
+   "options": "Territory"
+  },
+  {
+   "fetch_from": "warehouse.vehicle_no",
+   "fieldname": "vehicle_no",
+   "fieldtype": "Data",
+   "label": "Vehicle No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "col_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_allocated",
+   "fieldtype": "Currency",
+   "label": "Total Allocated",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_40",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "This amount will be added in customer ledger without against any Invoice",
+   "fieldname": "total_balance",
+   "fieldtype": "Currency",
+   "label": "Total Balance",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_received_amount",
+   "fieldtype": "Currency",
+   "label": "Total Received Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_42",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_39",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Cash Amount",
+   "mandatory_depends_on": "eval:doc.cash_payment == 1"
+  },
+  {
+   "depends_on": "eval:doc.bank_payment == 1",
+   "fieldname": "sec_bank",
+   "fieldtype": "Section Break",
+   "label": "Bank Payment"
+  },
+  {
+   "fieldname": "payment",
+   "fieldtype": "Table",
+   "options": "Distributor Invoice Payments"
+  },
+  {
+   "fetch_from": "warehouse.cash_account",
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Cash Account",
+   "mandatory_depends_on": "eval:doc.cash_payment == 1",
+   "options": "Mode of Payment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bank_amount",
+   "fieldtype": "Currency",
+   "label": "Bank Amount",
+   "mandatory_depends_on": "eval:doc.bank_payment == 1"
+  },
+  {
+   "fetch_from": "warehouse.bank_account",
+   "fieldname": "bank_mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "mandatory_depends_on": "eval:doc.bank_payment == 1",
+   "options": "Mode of Payment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cheque_no",
+   "fieldtype": "Data",
+   "label": "Cheque No",
+   "mandatory_depends_on": "eval:doc.bank_payment == 1"
+  },
+  {
+   "fieldname": "contact_detail",
+   "fieldtype": "Small Text",
+   "label": "Contact Detail",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "cb42",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_37",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.cash_payment == 1",
+   "fieldname": "cb39",
+   "fieldtype": "Section Break",
+   "label": "Cash Payment Invoices Allocation"
+  },
+  {
+   "fieldname": "column_break_43",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.bank_payment == 1",
+   "fieldname": "section_break_47",
+   "fieldtype": "Section Break",
+   "label": "Bank Payment Invoices Allocation"
+  },
+  {
+   "fieldname": "cb34",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "cash_payment",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Cash Payment"
+  },
+  {
+   "fieldname": "column_break_34",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bank_payment",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Bank Payment"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "salesman_details_section",
+   "fieldtype": "Section Break",
+   "label": "Salesman Details"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attach_image",
+   "fieldtype": "Attach",
+   "label": "Bill Image"
+  },
+  {
+   "fetch_from": "sales_person.full_name",
+   "fieldname": "sales_person_name",
+   "fieldtype": "Data",
+   "label": "Sales Person Name"
+  },
+  {
+   "fieldname": "discount_applicable_qty",
+   "fieldtype": "Float",
+   "label": "Discount Applicable Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "promotional_discount_section",
+   "fieldtype": "Section Break",
+   "label": "Promotional Discount"
+  },
+  {
+   "fieldname": "column_break_30",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_promotional_discount",
+   "fieldtype": "Currency",
+   "label": "Total Promotional Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_applicable_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Applicable Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_33",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cash_payment",
+   "fieldtype": "Check",
+   "label": "Is Cash Payment"
+  },
+  {
+   "fetch_from": "customer_group.promoted_customer",
+   "fieldname": "promoted_customer",
+   "fieldtype": "Select",
+   "label": "Promoted Customer",
+   "options": "\nYes"
+  },
+  {
+   "fetch_from": "customer_name.customer_group",
+   "fieldname": "customer_group",
+   "fieldtype": "Link",
+   "label": "Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "fieldname": "prom_disc",
+   "fieldtype": "Percent",
+   "label": "Promotional Discount %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shop_route",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Shop Route",
+   "options": "Shop Route"
+  },
+  {
+   "default": "Shop Route",
+   "fieldname": "srt",
+   "fieldtype": "Data",
+   "label": "SRT"
+  },
+  {
+   "fetch_from": "customer_name.customer_mobile_no",
+   "fieldname": "customer_mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No"
+  },
+  {
+   "fieldname": "mode_payment",
+   "fieldtype": "Select",
+   "label": "Mode of Payment",
+   "options": "\nCash\nCredit\nCheque"
+  },
+  {
+   "default": "0",
+   "fieldname": "promoted_product_added",
+   "fieldtype": "Check",
+   "label": "Promoted Product Added"
+  },
+  {
+   "fieldname": "total_fl_weight",
+   "fieldtype": "Float",
+   "label": "Total Flourio Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fl_disc",
+   "fieldtype": "Percent",
+   "label": "Flourio Discount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "chakki_item_added",
+   "fieldtype": "Check",
+   "label": "Chakki Item Added"
+  },
+  {
+   "default": "0",
+   "fieldname": "fine_item_added",
+   "fieldtype": "Check",
+   "label": "Fine Item Added"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "promo_weight",
+   "fieldtype": "Float",
+   "label": "Promo Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "no_of_free_items",
+   "fieldtype": "Float",
+   "label": "No of Free Items"
+  },
+  {
+   "fieldname": "free_fl_item",
+   "fieldtype": "Int",
+   "label": "Free FL Item"
+  },
+  {
+   "fieldname": "promo_fl_weight",
+   "fieldtype": "Float",
+   "label": "Promo FL Weight"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_90",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fieldname": "check_in",
+   "fieldtype": "Data",
+   "label": "Check In",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_92",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "check_out",
+   "fieldtype": "Data",
+   "label": "Check Out ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_94",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "promotional_section",
+   "fieldtype": "Section Break",
+   "label": "Promotional"
+  },
+  {
+   "fieldname": "p2_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "p3_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "p4_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visti_number",
+   "fieldtype": "Data",
+   "label": "Visti number"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:10.982681",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Distributor Invoice",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

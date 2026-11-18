@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "autoname": "MFG-FPO-.YYYY.-.####",
+ "creation": "2022-04-19 13:59:10.828726",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "section_break_2",
+  "finished_good",
+  "target_warehouse",
+  "qty",
+  "column_break_6",
+  "item_code",
+  "date",
+  "linked_se",
+  "column_break_2",
+  "item_name",
+  "posting_time",
+  "semi_finished_items_section",
+  "items",
+  "amended_from",
+  "cost_center"
+ ],
+ "fields": [
+  {
+   "fieldname": "finished_good",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Finished Good",
+   "options": "Finished Good Template",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "label": "Target Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "finished_good.item",
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "finished_good.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "semi_finished_items_section",
+   "fieldtype": "Section Break",
+   "label": "Semi Finished Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Finished Good Item"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FG Production Order",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "linked_se",
+   "fieldtype": "Data",
+   "label": "Linked SE",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fetch_from": "company.cost_center",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Cost center",
+   "options": "Cost Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "label": "Posting Time"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:13.135115",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "FG Production Order",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

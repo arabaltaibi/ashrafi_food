@@ -1,0 +1,29 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2023-01-18 19:26:38.376320",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2026-11-18 14:20:14.123919",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Daily Sales Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Distributor Invoice",
+ "report_name": "Daily Sales Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ]
+}

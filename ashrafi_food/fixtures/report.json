@@ -1,0 +1,614 @@
+[
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"columns\":[{\"label\":\"Posting Date\",\"fieldname\":\"posting_date\",\"fieldtype\":\"Date\",\"options\":null,\"width\":90,\"id\":\"posting_date\",\"name\":\"Posting Date\",\"editable\":false},{\"label\":\"Customer\",\"fieldname\":\"party\",\"fieldtype\":\"Link\",\"options\":\"Customer\",\"width\":180,\"id\":\"party\",\"name\":\"Customer\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"bill_no\",\"field\":\"bill_no\",\"fieldtype\":\"Data\",\"label\":\"Bill No\",\"insert_after_index\":1,\"link_field\":\"voucher_no\",\"doctype\":\"Sales Invoice\",\"width\":100,\"id\":\"bill_no\",\"name\":\"Bill No\",\"editable\":false,\"compareValue\":null},{\"label\":\"Invoiced Amount\",\"fieldname\":\"invoiced\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"invoiced\",\"name\":\"Invoiced Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Paid Amount\",\"fieldname\":\"paid\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"paid\",\"name\":\"Paid Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Credit Note\",\"fieldname\":\"credit_note\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"credit_note\",\"name\":\"Credit Note\",\"editable\":false,\"compareValue\":null},{\"label\":\"Outstanding Amount\",\"fieldname\":\"outstanding\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"outstanding\",\"name\":\"Outstanding Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Age (Days)\",\"fieldname\":\"age\",\"fieldtype\":\"Int\",\"options\":null,\"width\":80,\"id\":\"age\",\"name\":\"Age (Days)\",\"editable\":false,\"compareValue\":null},{\"label\":\"0-30\",\"fieldname\":\"range1\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range1\",\"name\":\"0-30\",\"editable\":false,\"compareValue\":null},{\"label\":\"31-60\",\"fieldname\":\"range2\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range2\",\"name\":\"31-60\",\"editable\":false,\"compareValue\":null},{\"label\":\"61-90\",\"fieldname\":\"range3\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range3\",\"name\":\"61-90\",\"editable\":false,\"compareValue\":null},{\"label\":\"91-120\",\"fieldname\":\"range4\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range4\",\"name\":\"91-120\",\"editable\":false,\"compareValue\":null},{\"label\":\"121-Above\",\"fieldname\":\"range5\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range5\",\"name\":\"121-Above\",\"editable\":false,\"compareValue\":null},{\"label\":\"Currency\",\"fieldname\":\"currency\",\"fieldtype\":\"Link\",\"options\":\"Currency\",\"width\":80,\"id\":\"currency\",\"name\":\"Currency\",\"editable\":false,\"compareValue\":null},{\"label\":\"Customer LPO\",\"fieldname\":\"po_no\",\"fieldtype\":\"Data\",\"options\":null,\"width\":120,\"id\":\"po_no\",\"name\":\"Customer LPO\",\"editable\":false,\"compareValue\":null},{\"label\":\"Area\",\"fieldname\":\"territory\",\"fieldtype\":\"Link\",\"options\":\"Territory\",\"width\":120,\"id\":\"territory\",\"name\":\"Area\",\"editable\":false,\"compareValue\":null},{\"label\":\"Customer Group\",\"fieldname\":\"customer_group\",\"fieldtype\":\"Link\",\"options\":\"Customer Group\",\"width\":120,\"id\":\"customer_group\",\"name\":\"Customer Group\",\"editable\":false,\"compareValue\":null},{\"label\":\"Sales Person\",\"fieldname\":\"sales_person\",\"fieldtype\":\"Data\",\"options\":null,\"width\":120,\"id\":\"sales_person\",\"name\":\"Sales Person\",\"editable\":false,\"compareValue\":null}]}",
+  "letter_head": null,
+  "modified": "2023-02-27 15:38:21.624661",
+  "module": "Accounts",
+  "name": "Accounts Receivable Report",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": "Accounts Receivable",
+  "report_name": "Accounts Receivable Report",
+  "report_script": null,
+  "report_type": "Custom Report",
+  "roles": [
+   {
+    "parent": "Accounts Receivable Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Accounts Receivable Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Accounts Receivable Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"columns\":[{\"label\":\"Voucher No\",\"fieldname\":\"voucher_no\",\"fieldtype\":\"Dynamic Link\",\"options\":\"voucher_type\",\"width\":180,\"id\":\"voucher_no\",\"name\":\"Voucher No\",\"editable\":false,\"compareValue\":null},{\"label\":\"Posting Date\",\"fieldname\":\"posting_date\",\"fieldtype\":\"Date\",\"options\":null,\"width\":90,\"id\":\"posting_date\",\"name\":\"Posting Date\",\"editable\":false},{\"label\":\"Invoiced Amount\",\"fieldname\":\"invoiced\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"invoiced\",\"name\":\"Invoiced Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Customer\",\"fieldname\":\"party\",\"fieldtype\":\"Link\",\"options\":\"Customer\",\"width\":180,\"id\":\"party\",\"name\":\"Customer\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"territory_sales_invoice\",\"field\":\"territory\",\"fieldtype\":\"Link\",\"label\":\"Territory\",\"insert_after_index\":3,\"link_field\":\"voucher_no\",\"doctype\":\"Sales Invoice\",\"options\":\"Territory\",\"width\":100,\"id\":\"territory_sales_invoice\",\"name\":\"Area\",\"editable\":false,\"compareValue\":null},{\"label\":\"Paid Amount\",\"fieldname\":\"paid\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"paid\",\"name\":\"Paid Amount\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"mode_of_payment\",\"field\":\"mode_of_payment\",\"fieldtype\":\"Link\",\"label\":\"Mode of Payment\",\"insert_after_index\":5,\"link_field\":\"voucher_no\",\"doctype\":\"Payment Entry\",\"options\":\"Mode of Payment\",\"width\":100,\"id\":\"mode_of_payment\",\"name\":\"Mode of Payment\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"reference_no\",\"field\":\"reference_no\",\"fieldtype\":\"Data\",\"label\":\"Cheque/Reference No\",\"insert_after_index\":5,\"link_field\":\"voucher_no\",\"doctype\":\"Payment Entry\",\"width\":100,\"id\":\"reference_no\",\"name\":\"Cheque/Reference No\",\"editable\":false,\"compareValue\":null},{\"label\":\"Credit Note\",\"fieldname\":\"credit_note\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"credit_note\",\"name\":\"Credit Note\",\"editable\":false,\"compareValue\":null},{\"label\":\"Outstanding Amount\",\"fieldname\":\"outstanding\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"outstanding\",\"name\":\"Outstanding Amount\",\"editable\":false,\"compareValue\":null},{\"label\":\"Age (Days)\",\"fieldname\":\"age\",\"fieldtype\":\"Int\",\"options\":null,\"width\":80,\"id\":\"age\",\"name\":\"Age (Days)\",\"editable\":false,\"compareValue\":null},{\"label\":\"0-30\",\"fieldname\":\"range1\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range1\",\"name\":\"0-30\",\"editable\":false,\"compareValue\":null},{\"label\":\"31-60\",\"fieldname\":\"range2\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range2\",\"name\":\"31-60\",\"editable\":false,\"compareValue\":null},{\"label\":\"61-90\",\"fieldname\":\"range3\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range3\",\"name\":\"61-90\",\"editable\":false,\"compareValue\":null},{\"label\":\"91-120\",\"fieldname\":\"range4\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range4\",\"name\":\"91-120\",\"editable\":false,\"compareValue\":null},{\"label\":\"121-Above\",\"fieldname\":\"range5\",\"fieldtype\":\"Currency\",\"options\":\"currency\",\"width\":120,\"id\":\"range5\",\"name\":\"121-Above\",\"editable\":false,\"compareValue\":null}]}",
+  "letter_head": null,
+  "modified": "2023-02-27 15:53:02.028537",
+  "module": "Accounts",
+  "name": "Recovery Realization Report",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": "Accounts Receivable",
+  "report_name": "Recovery Realization Report",
+  "report_script": null,
+  "report_type": "Custom Report",
+  "roles": [
+   {
+    "parent": "Recovery Realization Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Recovery Realization Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Recovery Realization Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Payment Entry\",\"mode_of_payment\",\"=\",\"Cash with Nazimabad\",false],[\"Payment Entry\",\"posting_date\",\"=\",\"2023-05-05\",false],[\"Payment Entry\",\"bill_type\",\"=\",\"Current Bill\",false]],\"fields\":[[\"name\",\"Payment Entry\"],[\"docstatus\",\"Payment Entry\"],[\"payment_type\",\"Payment Entry\"],[\"posting_date\",\"Payment Entry\"],[\"mode_of_payment\",\"Payment Entry\"],[\"party\",\"Payment Entry\"],[\"paid_amount\",\"Payment Entry\"],[\"bill_type\",\"Payment Entry\"]],\"order_by\":\"`tabPayment Entry`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"payment_type\":120,\"posting_date\":120,\"mode_of_payment\":120,\"party\":120,\"paid_amount\":120,\"bill_type\":120},\"group_by\":null}",
+  "letter_head": null,
+  "modified": "2023-05-06 12:15:22.887847",
+  "module": "Accounts",
+  "name": "Recovery/Current Report",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Payment Entry",
+  "reference_report": null,
+  "report_name": "Recovery/Current Report",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Recovery/Current Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Recovery/Current Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Recovery/Current Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Payment Entry\",\"mode_of_payment\",\"=\",\"Cash with Nazimabad\",false],[\"Payment Entry\",\"posting_date\",\"=\",\"2023-05-05\",false],[\"Payment Entry\",\"bill_type\",\"=\",\"Current Bill\",false]],\"fields\":[[\"name\",\"Payment Entry\"],[\"docstatus\",\"Payment Entry\"],[\"payment_type\",\"Payment Entry\"],[\"posting_date\",\"Payment Entry\"],[\"mode_of_payment\",\"Payment Entry\"],[\"party\",\"Payment Entry\"],[\"paid_amount\",\"Payment Entry\"],[\"bill_type\",\"Payment Entry\"]],\"order_by\":\"`tabPayment Entry`.`modified` desc\",\"add_totals_row\":true,\"page_length\":20,\"column_widths\":{\"name\":120,\"payment_type\":120,\"posting_date\":120,\"mode_of_payment\":120,\"party\":120,\"paid_amount\":120,\"bill_type\":120},\"group_by\":null}",
+  "letter_head": null,
+  "modified": "2023-05-06 16:19:02.118135",
+  "module": "Accounts",
+  "name": "Recovery/Current GT Report",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Payment Entry",
+  "reference_report": "Payment Entry",
+  "report_name": "Recovery/Current GT Report",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Recovery/Current GT Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Recovery/Current GT Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Recovery/Current GT Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2023-05-09 20:53:39.606803",
+  "module": "Accounts",
+  "name": "Payment Entry",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": "SELECT\n    pe.name AS \"ID:Link/Payment Entry:220\",\n    per.bill_no AS \"Bill No.:Data:100\",\n    pe.posting_date AS \"Posting Date:Date:100\",\n    per.total_amount AS \"Bill Amount:Float:150\",\n    pe.party_name AS \"Party:Data:100\",\n    pe.bill_type AS \"Bill:Data:150\",\n    co.territory AS \"Area:Link/Territory:220\",\n    co.primary_address AS \"Address:Data:220\",\n    per.allocated_amount AS \"Received Amount:Float:100\",\n    pe.mode_of_payment AS \"Mode Of Payment:Data:100\",\n    pe.reference_no AS \"Cheque#:Data:100\",\n    pe.reference_date AS \"Cheque Date:Date:100\",\n    per.outstanding_amount AS \"Balance Amount:Float:100\",\n    pe.status AS \"Status:Select:150\"\nFROM\n    `tabPayment Entry` AS pe\nLEFT JOIN\n    `tabPayment Entry Reference` AS per ON per.parent = pe.name\nLEFT JOIN\n    `tabCustomer` AS co ON co.name = pe.party_name\nWHERE\n    pe.docstatus = 1\n    AND pe.posting_date >= %(from_date)s\n    AND pe.posting_date <= %(to_date)s\n",
+  "ref_doctype": "Payment Entry",
+  "reference_report": "",
+  "report_name": "Payment Entry",
+  "report_script": "frappe.query_reports['Payment Entry'] = {\n    filters: [\n        {\n            fieldname: \"from_date\",\n            label: __(\"From Date\"),\n            fieldtype: \"Date\",\n            default: frappe.datetime.nowdate()\n        },\n        {\n            fieldname: \"to_date\",\n            label: __(\"To Date\"),\n            fieldtype: \"Date\",\n            default: frappe.datetime.nowdate()\n        },\n           ]\n};\n",
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Payment Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Payment Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Payment Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-04-20 12:34:23.165080",
+  "module": "Accounts",
+  "name": "test2",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": "SELECT pe.user_name,\r\n               SUM(CASE WHEN pe.mode_of_payment = 'Cash' THEN pe.paid_amount ELSE 0 END) AS cash_amount,\r\n               SUM(CASE WHEN pe.mode_of_payment = 'Wire Transfer' THEN pe.paid_amount ELSE 0 END) AS wire_transfer_amount,\r\n               SUM(pdc.amount_paid) AS amount_paid\r\n        FROM `tabPDC` AS pdc\r\n        RIGHT JOIN `tabPayment Entry` AS pe\r\n        ON pdc.user_name=pe.user_name\r\n        GROUP BY pdc.user_name\r\n        ",
+  "ref_doctype": "PDC",
+  "reference_report": null,
+  "report_name": "test2",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "test2",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Material Request\",\"schedule_date\",\"Between\",[\"2024-07-03\",\"2024-07-03\"],false],[\"Material Request\",\"company\",\"=\",\"Ashrafi Food Pvt. Ltd\"]],\"fields\":[[\"item_code\",\"Material Request Item\"],[\"_aggregate_column\",\"Material Request Item\"]],\"order_by\":\"`tabMaterial Request`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"Material Request Item:item_code\":100,\"_aggregate_column\":200},\"group_by\":{\"group_by\":\"`tabMaterial Request Item`.`item_code`\",\"aggregate_function\":\"sum\",\"aggregate_on\":\"`tabMaterial Request Item`.`qty`\"}}",
+  "letter_head": "ASHRAFI FOODS PVT LTD",
+  "modified": "2024-07-03 12:20:37.863896",
+  "module": "Stock",
+  "name": "Total Load Out",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Material Request",
+  "reference_report": null,
+  "report_name": "Total Load Out",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Total Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Total Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Total Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Total Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Total Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "ASHRAFI FOODS PVT LTD",
+  "modified": "2024-07-31 11:38:37.687410",
+  "module": "Stock",
+  "name": "Warehouse Item Qty",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": null,
+  "report_name": "Warehouse Item Qty",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Warehouse Item Qty",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Warehouse Item Qty",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Material Request\",\"set_warehouse\",\"=\",\"Malir - AFI\",false],[\"Material Request\",\"company\",\"=\",\"Ashrafi Food Pvt. Ltd\"]],\"fields\":[[\"name\",\"Material Request\"],[\"docstatus\",\"Material Request\"],[\"set_warehouse\",\"Material Request\"],[\"item_code\",\"Material Request Item\"],[\"qty\",\"Material Request Item\"]],\"order_by\":\"`tabMaterial Request`.`modified` desc\",\"add_totals_row\":true,\"page_length\":20,\"column_widths\":{\"name\":120,\"set_warehouse\":120,\"Material Request Item:item_code\":100,\"Material Request Item:qty\":80},\"group_by\":null}",
+  "letter_head": "ASHRAFI FOODS PVT LTD",
+  "modified": "2024-12-30 11:52:34.064700",
+  "module": "Stock",
+  "name": "Load Out",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Material Request",
+  "reference_report": null,
+  "report_name": "Load Out",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Load Out",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Sales Invoice\",\"posting_date\",\"Between\",[\"2025-04-09\",\"2025-04-09\"],false],[\"Sales Invoice\",\"company\",\"=\",\"Ashrafi Food Pvt. Ltd\"]],\"fields\":[[\"name\",\"Sales Invoice\"],[\"docstatus\",\"Sales Invoice\"],[\"title\",\"Sales Invoice\"],[\"customer\",\"Sales Invoice\"],[\"remark\",\"Sales Invoice\"],[\"company\",\"Sales Invoice\"],[\"posting_date\",\"Sales Invoice\"],[\"distributor_invoice_no\",\"Sales Invoice\"],[\"grand_total\",\"Sales Invoice\"],[\"status\",\"Sales Invoice\"],[\"currency\",\"Sales Invoice\"],[\"customer_name\",\"Sales Invoice\"],[\"base_grand_total\",\"Sales Invoice\"],[\"outstanding_amount\",\"Sales Invoice\"],[\"due_date\",\"Sales Invoice\"],[\"is_return\",\"Sales Invoice\"]],\"order_by\":\"`tabSales Invoice`.`modified` asc\",\"add_totals_row\":true,\"page_length\":20,\"column_widths\":{\"name\":193,\"title\":120,\"customer\":120,\"remark\":120,\"company\":120,\"posting_date\":120,\"distributor_invoice_no\":120,\"grand_total\":120,\"status\":120,\"currency\":120,\"customer_name\":120,\"base_grand_total\":120,\"outstanding_amount\":120,\"due_date\":120,\"is_return\":120},\"group_by\":null}",
+  "letter_head": "ASHRAFI FOODS PVT LTD",
+  "modified": "2025-04-10 14:46:46.115054",
+  "module": "Accounts",
+  "name": "sss",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "sss",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accountant-1"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Coordinator"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "PE + GL View Only"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Distributor Invoice"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Officer"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Bulk Payment Entry"
+   },
+   {
+    "parent": "sss",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Recovery"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"columns\":[{\"fieldname\":\"base_grand_total\",\"field\":\"base_grand_total\",\"fieldtype\":\"Currency\",\"label\":\"Grand Total (Company Currency)\",\"insert_after_index\":-1,\"link_field\":\"voucher_no\",\"doctype\":\"Sales Invoice\",\"options\":\"Company:company:default_currency\",\"width\":100,\"id\":\"base_grand_total\",\"name\":\"Grand Total (Company Currency)\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"gross_total_sales_invoice\",\"field\":\"gross_total\",\"fieldtype\":\"Currency\",\"label\":\"Gross Total\",\"insert_after_index\":-1,\"link_field\":\"voucher_no\",\"doctype\":\"Sales Invoice\",\"width\":100,\"id\":\"gross_total_sales_invoice\",\"name\":\"Gross Total\",\"editable\":false,\"compareValue\":null},{\"label\":\"Date\",\"fieldname\":\"date\",\"fieldtype\":\"Datetime\",\"width\":150,\"id\":\"date\",\"name\":\"Date\",\"editable\":false,\"compareValue\":null},{\"label\":\"Item\",\"fieldname\":\"item_code\",\"fieldtype\":\"Link\",\"options\":\"Item\",\"width\":100,\"id\":\"item_code\",\"name\":\"Item\",\"editable\":false,\"compareValue\":null},{\"label\":\"Item Name\",\"fieldname\":\"item_name\",\"width\":100,\"id\":\"item_name\",\"name\":\"Item Name\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"base_total\",\"field\":\"base_total\",\"fieldtype\":\"Currency\",\"label\":\"Total (Company Currency)\",\"insert_after_index\":2,\"link_field\":\"voucher_no\",\"doctype\":\"Delivery Note\",\"options\":\"Company:company:default_currency\",\"width\":100,\"id\":\"base_total\",\"name\":\"Total (Company Currency)\",\"editable\":false,\"compareValue\":null},{\"fieldname\":\"gross_total\",\"field\":\"gross_total\",\"fieldtype\":\"Currency\",\"label\":\"Gross Total\",\"insert_after_index\":3,\"link_field\":\"voucher_no\",\"doctype\":\"Delivery Note\",\"width\":100,\"id\":\"gross_total\",\"name\":\"Gross Total\",\"editable\":false,\"compareValue\":null},{\"label\":\"Stock UOM\",\"fieldname\":\"stock_uom\",\"fieldtype\":\"Link\",\"options\":\"UOM\",\"width\":90,\"id\":\"stock_uom\",\"name\":\"Stock UOM\",\"editable\":false,\"compareValue\":null},{\"label\":\"In Qty\",\"fieldname\":\"in_qty\",\"fieldtype\":\"Float\",\"width\":80,\"convertible\":\"qty\",\"id\":\"in_qty\",\"name\":\"In Qty\",\"editable\":false,\"compareValue\":null},{\"label\":\"Out Qty\",\"fieldname\":\"out_qty\",\"fieldtype\":\"Float\",\"width\":80,\"convertible\":\"qty\",\"id\":\"out_qty\",\"name\":\"Out Qty\",\"editable\":false,\"compareValue\":null},{\"label\":\"Balance Qty\",\"fieldname\":\"qty_after_transaction\",\"fieldtype\":\"Float\",\"width\":100,\"convertible\":\"qty\",\"id\":\"qty_after_transaction\",\"name\":\"Balance Qty\",\"editable\":false,\"compareValue\":null},{\"label\":\"Voucher #\",\"fieldname\":\"voucher_no\",\"fieldtype\":\"Dynamic Link\",\"options\":\"voucher_type\",\"width\":150,\"id\":\"voucher_no\",\"name\":\"Voucher #\",\"editable\":false,\"compareValue\":null},{\"label\":\"Warehouse\",\"fieldname\":\"warehouse\",\"fieldtype\":\"Link\",\"options\":\"Warehouse\",\"width\":150,\"id\":\"warehouse\",\"name\":\"Warehouse\",\"editable\":false,\"compareValue\":null},{\"label\":\"Item Group\",\"fieldname\":\"item_group\",\"fieldtype\":\"Link\",\"options\":\"Item Group\",\"width\":100,\"id\":\"item_group\",\"name\":\"Item Group\",\"editable\":false,\"compareValue\":null},{\"label\":\"Brand\",\"fieldname\":\"brand\",\"fieldtype\":\"Link\",\"options\":\"Brand\",\"width\":100,\"id\":\"brand\",\"name\":\"Brand\",\"editable\":false,\"compareValue\":null},{\"label\":\"Description\",\"fieldname\":\"description\",\"width\":200,\"id\":\"description\",\"name\":\"Description\",\"editable\":false,\"compareValue\":null},{\"label\":\"Incoming Rate\",\"fieldname\":\"incoming_rate\",\"fieldtype\":\"Currency\",\"width\":110,\"options\":\"Company:company:default_currency\",\"convertible\":\"rate\",\"id\":\"incoming_rate\",\"name\":\"Incoming Rate\",\"editable\":false,\"compareValue\":null},{\"label\":\"Valuation Rate\",\"fieldname\":\"valuation_rate\",\"fieldtype\":\"Currency\",\"width\":110,\"options\":\"Company:company:default_currency\",\"convertible\":\"rate\",\"id\":\"valuation_rate\",\"name\":\"Valuation Rate\",\"editable\":false,\"compareValue\":null},{\"label\":\"Balance Value\",\"fieldname\":\"stock_value\",\"fieldtype\":\"Currency\",\"width\":110,\"options\":\"Company:company:default_currency\",\"id\":\"stock_value\",\"name\":\"Balance Value\",\"editable\":false,\"compareValue\":null},{\"label\":\"Value Change\",\"fieldname\":\"stock_value_difference\",\"fieldtype\":\"Currency\",\"width\":110,\"options\":\"Company:company:default_currency\",\"id\":\"stock_value_difference\",\"name\":\"Value Change\",\"editable\":false,\"compareValue\":null},{\"label\":\"Voucher Type\",\"fieldname\":\"voucher_type\",\"width\":110,\"id\":\"voucher_type\",\"name\":\"Voucher Type\",\"editable\":false,\"compareValue\":null},{\"label\":\"Voucher #\",\"fieldname\":\"voucher_no\",\"fieldtype\":\"Dynamic Link\",\"options\":\"voucher_type\",\"width\":150,\"id\":\"voucher_no\",\"name\":\"Voucher #\",\"editable\":false,\"compareValue\":null},{\"label\":\"Batch\",\"fieldname\":\"batch_no\",\"fieldtype\":\"Link\",\"options\":\"Batch\",\"width\":100,\"id\":\"batch_no\",\"name\":\"Batch\",\"editable\":false,\"compareValue\":null},{\"label\":\"Serial No\",\"fieldname\":\"serial_no\",\"fieldtype\":\"Link\",\"options\":\"Serial No\",\"width\":100,\"id\":\"serial_no\",\"name\":\"Serial No\",\"editable\":false,\"compareValue\":null},{\"label\":\"Balance Serial No\",\"fieldname\":\"balance_serial_no\",\"width\":100,\"id\":\"balance_serial_no\",\"name\":\"Balance Serial No\",\"editable\":false,\"compareValue\":null},{\"label\":\"Project\",\"fieldname\":\"project\",\"fieldtype\":\"Link\",\"options\":\"Project\",\"width\":100,\"id\":\"project\",\"name\":\"Project\",\"editable\":false,\"compareValue\":null},{\"label\":\"Company\",\"fieldname\":\"company\",\"fieldtype\":\"Link\",\"options\":\"Company\",\"width\":110,\"id\":\"company\",\"name\":\"Company\",\"editable\":false,\"compareValue\":null}]}",
+  "letter_head": "ASHRAFI FOODS PVT LTD",
+  "modified": "2025-08-05 14:38:42.564631",
+  "module": "Stock",
+  "name": "nnk",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": "Stock Ledger",
+  "report_name": "nnk",
+  "report_script": null,
+  "report_type": "Custom Report",
+  "roles": [
+   {
+    "parent": "nnk",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "nnk",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Stock Entry\",\"posting_date\",\"Between\",[\"2025-12-01\",\"2025-12-15\"],false],[\"Stock Entry Detail\",\"t_warehouse\",\"=\",\"Damaged - Abdullah Warehouse - AFI\",false]],\"fields\":[[\"name\",\"Stock Entry\"],[\"docstatus\",\"Stock Entry\"],[\"stock_entry_type\",\"Stock Entry\"],[\"s_warehouse\",\"Stock Entry Detail\"],[\"t_warehouse\",\"Stock Entry Detail\"],[\"item_code\",\"Stock Entry Detail\"],[\"item_name\",\"Stock Entry Detail\"],[\"qty\",\"Stock Entry Detail\"]],\"order_by\":\"`tabStock Entry`.`modified` desc\",\"add_totals_row\":true,\"page_length\":20,\"column_widths\":{\"name\":120,\"docstatus\":120,\"stock_entry_type\":120,\"Stock Entry Detail:s_warehouse\":120,\"Stock Entry Detail:t_warehouse\":120,\"Stock Entry Detail:item_code\":120,\"Stock Entry Detail:item_name\":120,\"Stock Entry Detail:qty\":120},\"group_by\":null}",
+  "letter_head": "ASHRAFI FOODS PVT LTD",
+  "modified": "2025-12-15 17:59:56.837256",
+  "module": "Stock",
+  "name": "Damaged Item Report",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Damaged Item Report",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Damaged Item Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Damaged Item Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Damaged Item Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Damaged Item Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Damaged Item Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock and Production Domain"
+   }
+  ]
+ }
+]

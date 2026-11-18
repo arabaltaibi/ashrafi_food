@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-08 11:14:44.083389",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "column_break_2",
+  "master_shop_route",
+  "van_no",
+  "section_break_5",
+  "table_2"
+ ],
+ "fields": [
+  {
+   "fieldname": "van_no",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Van No",
+   "options": "Vehicle"
+  },
+  {
+   "fieldname": "table_2",
+   "fieldtype": "Table",
+   "options": "Shop CT"
+  },
+  {
+   "fieldname": "master_shop_route",
+   "fieldtype": "Link",
+   "label": "Master Shop Route",
+   "options": "Master Shop Route"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:12.746678",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Shop Route",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

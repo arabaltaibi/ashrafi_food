@@ -1,0 +1,237 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-02 15:55:17.578170",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "time",
+  "column_break_3",
+  "shop_id",
+  "company",
+  "column_break_6",
+  "remarks",
+  "available_qty",
+  "other_remarks",
+  "customer_group",
+  "section_break_10",
+  "picture_1",
+  "column_break_12",
+  "picture_2",
+  "column_break_14",
+  "picture_3",
+  "section_break_16",
+  "shop_name",
+  "contact_person",
+  "column_break_19",
+  "contact_no",
+  "territory",
+  "section_break_23",
+  "items",
+  "item_available_qty_section",
+  "amended_from",
+  "section_break_35",
+  "check_in",
+  "column_break_37",
+  "check_out",
+  "column_break_39",
+  "location"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shop_id",
+   "fieldtype": "Link",
+   "label": "Shop ID",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "shop_id.customer_name",
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Remarks",
+   "options": "Remarks"
+  },
+  {
+   "depends_on": "eval:doc.remarks == \"Stock Available\"",
+   "fieldname": "available_qty",
+   "fieldtype": "Float",
+   "label": "Available Qty"
+  },
+  {
+   "depends_on": "eval:doc.remarks == \"Other\"",
+   "fieldname": "other_remarks",
+   "fieldtype": "Data",
+   "label": "Other Remarks"
+  },
+  {
+   "fetch_from": "shop_id.customer_group",
+   "fieldname": "customer_group",
+   "fieldtype": "Data",
+   "label": "Customer Group",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "picture_1",
+   "fieldtype": "Attach",
+   "label": "Picture 1"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "picture_2",
+   "fieldtype": "Attach",
+   "label": "Picture 2"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "picture_3",
+   "fieldtype": "Attach",
+   "label": "Picture 3"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "shop_id.customer_name",
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "label": "Shop Name"
+  },
+  {
+   "fetch_from": "shop_id.contact_person",
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "shop_id.customer_mobile_no",
+   "fieldname": "contact_no",
+   "fieldtype": "Data",
+   "label": "Contact No."
+  },
+  {
+   "fetch_from": "shop_id.territory",
+   "fieldname": "territory",
+   "fieldtype": "Data",
+   "label": "Territory"
+  },
+  {
+   "fieldname": "section_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Field Manager Visit Child"
+  },
+  {
+   "fieldname": "item_available_qty_section",
+   "fieldtype": "Section Break",
+   "label": "Item Available Qty"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Field Manager Visit",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_35",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "check_in",
+   "fieldtype": "Data",
+   "label": "Check In"
+  },
+  {
+   "fieldname": "column_break_37",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "check_out",
+   "fieldtype": "Data",
+   "label": "Check Out"
+  },
+  {
+   "fieldname": "column_break_39",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:13.541971",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Field Manager Visit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

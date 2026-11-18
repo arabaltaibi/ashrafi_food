@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-11 17:01:46.926441",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "area",
+  "van_no",
+  "column_break_3",
+  "salesman",
+  "phone_number",
+  "section_break_6",
+  "location",
+  "total_km"
+ ],
+ "fields": [
+  {
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "label": "Area",
+   "options": "Warehouse"
+  },
+  {
+   "fetch_from": "area.vehicle_no",
+   "fieldname": "van_no",
+   "fieldtype": "Read Only",
+   "label": "VAN No"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "area.sales_person",
+   "fieldname": "salesman",
+   "fieldtype": "Read Only",
+   "label": "Salesman"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Geolocation"
+  },
+  {
+   "fieldname": "total_km",
+   "fieldtype": "Float",
+   "label": "Total Km"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:12.518043",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Live Tracking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,98 @@
+<h2 class="text-center">{%= __("LOAD VS SALES REPORT") %}</h2>
+<h5 class="text-center">
+    {%= __("From") %} {%= frappe.datetime.str_to_user(filters.from_date) %}
+    {%= __("to") %}
+    {%= frappe.datetime.str_to_user(filters.to_date) %}
+</h5>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th rowspan="2">{%= __("AREA NAME") %}</th>
+            <th colspan="10">{%= __("LOAD OUT") %}</th>
+            <th colspan="10">{%= __("SALE") %}</th>
+            <th colspan="2">{%= __("BALANCE") %}</th>
+        </tr>
+        <tr>
+            <!-- LOAD OUT Sub-headers -->
+            <th>{%= __("F-10") %}</th>
+            <th>{%= __("F-05") %}</th>
+            <th>{%= __("FINE") %}</th>
+            <th>{%= __("C-10") %}</th>
+            <th>{%= __("C-05") %}</th>
+            <th>{%= __("CHAKKI") %}</th>
+            <th>{%= __("FL-10") %}</th>
+            <th>{%= __("FL-05") %}</th>
+            <th>{%= __("FLUORIO") %}</th>
+            <th>{%= __("TOTAL") %}</th>
+            
+            <!-- SALE Sub-headers -->
+            <th>{%= __("F-10") %}</th>
+            <th>{%= __("F-05") %}</th>
+            <th>{%= __("FINE") %}</th>
+            <th>{%= __("C-10") %}</th>
+            <th>{%= __("C-05") %}</th>
+            <th>{%= __("CHAKKI") %}</th>
+            <th>{%= __("FL-10") %}</th>
+            <th>{%= __("FL-05") %}</th>
+            <th>{%= __("FLUORIO") %}</th>
+            <th>{%= __("TOTAL") %}</th>
+            
+            <!-- BALANCE Sub-headers -->
+            <th>{%= __("FRESH") %}</th>
+            <th>{%= __("DAMAGE") %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for(var i=0, l=data.length; i<l; i++) { %}
+            <tr {% if data[i].area_name == "TOTAL" %} style="font-weight: bold; background-color: #f5f5f5;" {% endif %}>
+                <td>{%= data[i].area_name %}</td>
+                
+                <!-- LOAD OUT Data -->
+                <td style="text-align: right;">{%= format_number(data[i].load_f10, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].load_f05, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].load_fine, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].load_c10, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].load_c05, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].load_chakki, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].load_fl10, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].load_fl05, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].load_fluorio, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].load_total, null, 1) %}</td>
+                
+                <!-- SALE Data -->
+                <td style="text-align: right;">{%= format_number(data[i].sale_f10, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].sale_f05, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].sale_fine, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].sale_c10, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].sale_c05, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].sale_chakki, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].sale_fl10, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].sale_fl05, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].sale_fluorio, null, 1) %}</td>
+                <td style="text-align: right; font-weight: bold;">{%= format_number(data[i].sale_total, null, 1) %}</td>
+                
+                <!-- BALANCE Data -->
+                <td style="text-align: right;">{%= format_number(data[i].balance_fresh, null, 1) %}</td>
+                <td style="text-align: right;">{%= format_number(data[i].balance_damage, null, 1) %}</td>
+            </tr>
+        {% } %}
+    </tbody>
+</table>
+
+<div style="margin-top: 20px; font-size: 9pt;">
+    <p><strong>{%= __("Notes:") %}</strong></p>
+    <ol>
+        <li>{%= __("LOAD OUT is considered from Stock Entry type of Material Loading") %}</li>
+        <li>{%= __("SALE is considered from Sales Invoice") %}</li>
+        <li>{%= __("BALANCE is considered from Stock Entry type Material Unloading (Warehouse Fresh and Damaged)") %}</li>
+        <li>{%= __("FRESH AND DAMAGE are total bags in 10KG equivalents") %}</li>
+        <li>{%= __("F-10, F-05, C-10, C-05, FL-10, FL-05 are item codes") %}</li>
+        <li>{%= __("Area name is target warehouse") %}</li>
+        <li>{%= __("FINE = F-10 + (F-05 ÷ 2)") %}</li>
+        <li>{%= __("CHAKKI = C-10 + (C-05 ÷ 2)") %}</li>
+        <li>{%= __("FLUORIO = FL-10 + (FL-05 ÷ 2)") %}</li>
+    </ol>
+</div>
+
+<p class="text-right text-muted">{%= __("Printed On") %} {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}</p>

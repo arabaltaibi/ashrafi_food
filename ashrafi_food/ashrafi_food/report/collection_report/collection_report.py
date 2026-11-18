@@ -1,0 +1,174 @@
+# Copyright (c) 2024, hidayat and contributors
+# For license information, please see license.txt
+
+import frappe
+from frappe.utils import getdate
+from frappe.utils.data import flt
+
+# Function to fetch data for the report
+def execute(filters=None):
+    conditions, filters = get_conditions(filters)
+    columns = get_columns(filters)
+    data = get_data(conditions, filters)
+
+    return columns, data
+
+# Define columns for the report
+def get_columns(filters):
+    columns = [
+        {"label": "Customer", "fieldname": "customer", "fieldtype": "Link", "options": "Customer"},
+        {"label": "Customer Name", "fieldname": "customer_name", "fieldtype": "Data","width": 150},
+         {"label": "Opening Balance", "fieldname": "opening_balance", "fieldtype": "Data","width": 150},
+        {"label": "Closing Balance", "fieldname": "customer_balance", "fieldtype": "Data","width": 150},
+        {"label": "Credit Limit", "fieldname": "credit_limit", "fieldtype": "Currency"},
+        {"label": "Credit Limit Date", "fieldname": "credit_limit_date", "fieldtype": "Data"},
+        {"label": "Used Credit Limit", "fieldname": "used_credit_limit", "fieldtype": "Currency"},
+        {"label": "Available Credit Limit", "fieldname": "available_credit_limit", "fieldtype": "Currency"},
+        {"label": "Total Due", "fieldname": "total_due", "fieldtype": "Currency"},
+        {"label": ("0-30 Days"), "fieldname": "0-30 days", "fieldtype": "Currency", "width": 120},
+        {"label": ("31-60 Days"), "fieldname": "31-60 days", "fieldtype": "Currency", "width": 120},
+        {"label": ("61-90 Days"), "fieldname": "61-90 days", "fieldtype": "Currency", "width": 120},
+        {"label": ("91-120 Days"), "fieldname": "91-120 days", "fieldtype": "Currency", "width": 120},
+        {"label": ("120-360 Days"), "fieldname": "120-360 days", "fieldtype": "Currency", "width": 120},
+        {"label": ("Above Days"), "fieldname": "above days", "fieldtype": "Currency", "width": 120},
+        {"label": "PDC Amount", "fieldname": "pdc_amount", "fieldtype": "Currency"}
+    ]
+    return columns
+
+def get_conditions(filters):
+    conditions = ""
+
+    if filters.get("customer"):conditions += " AND si.customer in %(customer)s"
+    if filters.get("status"):conditions += " AND si.status = %(status)s"
+    if filters.get("warehouse"):conditions += "AND si.set_warehouse in %(warehouse)s"
+    if filters.get("sales_person"):conditions += "AND sp.name in %(sales_person)s"
+
+    return conditions, filters
+
+# Fetch data for the report
+def get_data(conditions, filters):
+    data = frappe.db.sql("""
+        SELECT 
+            si.customer,
+            c.customer_name,
+            SUM(gle.debit) as debit,
+            SUM(gle.credit) as credit,
+            ccl.credit_limit,
+            SUM(si.outstanding_amount) as used_credit_limit,
+            SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 0 AND 30 THEN si.outstanding_amount ELSE 0 END) AS `0-30 days`,
+            SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 31 AND 60 THEN si.outstanding_amount ELSE 0 END) AS `31-60 days`,
+            SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 61 AND 90 THEN si.outstanding_amount ELSE 0 END) AS `61-90 days`,
+            SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 91 AND 120 THEN si.outstanding_amount ELSE 0 END) AS `91-120 days`,
+            SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 121 AND 360 THEN si.outstanding_amount ELSE 0 END) AS `120-360 days`,
+            SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) > 360 THEN si.outstanding_amount ELSE 0 END) AS `above days`
+        FROM `tabSales Invoice` si 
+        LEFT JOIN `tabCustomer` c ON si.customer = c.name
+        LEFT JOIN `tabCustomer Credit Limit` ccl ON c.name = ccl.parent
+        LEFT JOIN `tabSales Partner` sp ON sp.name = si.sales_partner
+        LEFT JOIN `tabGL Entry` gle ON gle.party = si.customer and gle.against_voucher_type = "Sales Invoice" and gle.against_voucher = si.name
+        WHERE si.docstatus = 1 AND si.status IN ('Partly Paid', 'Unpaid', 'Unpaid and Discounted', 'Partly Paid and Discounted', 'Overdue and Discounted', 'Overdue')
+            {conditions}
+        GROUP BY si.customer;
+
+    """.format(conditions=conditions), filters, as_dict=1)
+    
+    for row in data:
+        row['credit_limit_date'] = "30 Days"
+        row['total_due'] = flt(row['used_credit_limit'])
+        row['customer_balance'] = flt(row['debit']) - flt(row['credit'])
+        row['opening_balance'] = flt(row['debit']) - flt(row['credit'])
+        acl = flt(row['credit_limit']) - flt(row['used_credit_limit'])
+        if acl >= 0.0:
+            row['available_credit_limit'] = flt(acl)
+        else:
+            row['available_credit_limit'] = 0.0
+
+        row["pdc_amount"] =  sum([float(pdc.amount_paid or 0) for pdc in frappe.db.get_all("PDC",filters={"party":row.get("customer"),"clear":0},fields=["amount_paid"])])
+    
+    
+    return data
+
+
+# import frappe
+# from frappe.utils import getdate
+# from frappe.utils.data import flt
+
+# # Function to fetch data for the report
+# def execute(filters=None):
+#     conditions, filters = get_conditions(filters)
+#     columns = get_columns(filters)
+#     data = get_data(conditions, filters)
+
+#     return columns, data
+
+# # Define columns for the report
+# def get_columns(filters):
+#     columns = [
+#         {"label": "Customer", "fieldname": "customer", "fieldtype": "Link", "options": "Customer"},
+#         {"label": "Customer Name", "fieldname": "customer_name", "fieldtype": "Data","width": 150},
+#         {"label": "Closing Balance", "fieldname": "customer_balance", "fieldtype": "Data","width": 150},
+#         {"label": "Credit Limit", "fieldname": "credit_limit", "fieldtype": "Currency"},
+#         {"label": "Credit Limit Date", "fieldname": "credit_limit_date", "fieldtype": "Data"},
+#         {"label": "Used Credit Limit", "fieldname": "used_credit_limit", "fieldtype": "Currency"},
+#         {"label": "Available Credit Limit", "fieldname": "available_credit_limit", "fieldtype": "Currency"},
+#         {"label": "Total Due", "fieldname": "total_due", "fieldtype": "Currency"},
+#         {"label": ("0-30 Days"), "fieldname": "0-30 days", "fieldtype": "Currency", "width": 120},
+#         {"label": ("31-60 Days"), "fieldname": "31-60 days", "fieldtype": "Currency", "width": 120},
+#         {"label": ("61-90 Days"), "fieldname": "61-90 days", "fieldtype": "Currency", "width": 120},
+#         {"label": ("91-120 Days"), "fieldname": "91-120 days", "fieldtype": "Currency", "width": 120},
+#         {"label": ("120-360 Days"), "fieldname": "120-360 days", "fieldtype": "Currency", "width": 120},
+#         {"label": ("Above Days"), "fieldname": "above days", "fieldtype": "Currency", "width": 120},
+#         {"label": "PDC Amount", "fieldname": "pdc_amount", "fieldtype": "Currency"}
+#     ]
+#     return columns
+
+# def get_conditions(filters):
+#     conditions = ""
+
+#     if filters.get("customer"):conditions += " AND si.customer in %(customer)s"
+#     if filters.get("status"):conditions += " AND si.status = %(status)s"
+#     if filters.get("warehouse"):conditions += "AND si.set_warehouse in %(warehouse)s"
+#     if filters.get("sales_person"):conditions += "AND sp.name in %(sales_person)s"
+
+#     return conditions, filters
+
+# # Fetch data for the report
+# def get_data(conditions, filters):
+#     data = frappe.db.sql("""
+#         SELECT 
+#             si.customer,
+#             c.customer_name,
+#             ccl.credit_limit,
+#             SUM(si.outstanding_amount) as used_credit_limit,
+#             SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 0 AND 30 THEN si.outstanding_amount ELSE 0 END) AS `0-30 days`,
+#             SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 31 AND 60 THEN si.outstanding_amount ELSE 0 END) AS `31-60 days`,
+#             SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 61 AND 90 THEN si.outstanding_amount ELSE 0 END) AS `61-90 days`,
+#             SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 91 AND 120 THEN si.outstanding_amount ELSE 0 END) AS `91-120 days`,
+#             SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) BETWEEN 121 AND 360 THEN si.outstanding_amount ELSE 0 END) AS `120-360 days`,
+#             SUM(CASE WHEN DATEDIFF(CURDATE(), si.due_date) > 360 THEN si.outstanding_amount ELSE 0 END) AS `above days`
+#         FROM `tabSales Invoice` si 
+#         LEFT JOIN `tabCustomer` c ON si.customer = c.name
+#         LEFT JOIN `tabCustomer Credit Limit` ccl ON c.name = ccl.parent
+#         LEFT JOIN `tabSales Partner` sp ON sp.name = si.sales_partner
+#         WHERE si.docstatus = 1 AND si.status IN ('Partly Paid', 'Unpaid', 'Unpaid and Discounted', 'Partly Paid and Discounted', 'Overdue and Discounted', 'Overdue')
+#             {conditions}
+#         GROUP BY si.customer;
+
+#     """.format(conditions=conditions), filters, as_dict=1)
+    
+#     for row in data:
+#         closing_bal = frappe.db.sql("""
+#             SELECT SUM(credit) as credit, SUM(debit) as debit FROM `tabGL Entry` WHERE party= %s
+#         """, (row['customer'],), as_dict=True)[0]
+#         cls_balance = flt(closing_bal.debit) - flt(closing_bal.credit)
+#         row['customer_balance'] = round(cls_balance,2)
+#         row['credit_limit_date'] = "30 Days"
+#         row['total_due'] = flt(row['used_credit_limit'])
+        
+#         acl = flt(row['credit_limit']) - flt(row['used_credit_limit'])
+#         if acl >= 0.0:
+#             row['available_credit_limit'] = flt(acl)
+#         else:
+#             row['available_credit_limit'] = 0.0
+
+#     return data

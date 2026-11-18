@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-07-08 11:09:37.390235",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "day",
+  "supervisor_name",
+  "column_break_3",
+  "area",
+  "warehouse",
+  "column_break_6",
+  "user",
+  "salesman_name",
+  "section_break_8",
+  "route_table",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "label": "Area",
+   "options": "Territory"
+  },
+  {
+   "fetch_from": "user.username",
+   "fieldname": "salesman_name",
+   "fieldtype": "Data",
+   "label": "Salesman Name"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "warehouse.supervisor",
+   "fieldname": "supervisor_name",
+   "fieldtype": "Read Only",
+   "label": "Supervisor Name"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "route_table",
+   "fieldtype": "Table",
+   "label": "Route Table",
+   "options": "Shop Route CT"
+  },
+  {
+   "fieldname": "day",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Day",
+   "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "user.warehouse",
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "{day}.-.{area}.-"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:12.627586",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Master Shop Route",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

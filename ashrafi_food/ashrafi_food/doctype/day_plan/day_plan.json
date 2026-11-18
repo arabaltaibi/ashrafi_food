@@ -1,0 +1,201 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-10-01 22:56:48.770487",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "shop_name",
+  "column_break_3",
+  "area",
+  "mobile_number",
+  "column_break_6",
+  "area_incharge",
+  "contact_person",
+  "flow_status",
+  "day",
+  "section_break_9",
+  "status",
+  "item",
+  "column_break_12",
+  "remarks",
+  "image_1st",
+  "image_2nd",
+  "image_3rd",
+  "section_break_12",
+  "company",
+  "check_in",
+  "data_12",
+  "check_out",
+  "duration",
+  "column_break_18",
+  "user",
+  "location"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Data",
+   "label": "Date"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "label": "Area",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "area_incharge",
+   "fieldtype": "Data",
+   "label": "Area Incharge"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "day",
+   "fieldtype": "Select",
+   "label": "Day",
+   "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Link",
+   "label": "Status",
+   "options": "Day Plan Status"
+  },
+  {
+   "fieldname": "shop_name",
+   "fieldtype": "Select",
+   "label": "Shop Name",
+   "options": "Shop-1\nShop-2\nShop-3"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "data_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "check_in",
+   "fieldtype": "Time",
+   "label": "Check In"
+  },
+  {
+   "fieldname": "check_out",
+   "fieldtype": "Time",
+   "label": "Check Out"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Link",
+   "label": "Remarks",
+   "options": "Remarks"
+  },
+  {
+   "fieldname": "image_1st",
+   "fieldtype": "Attach Image",
+   "label": "Image 1st"
+  },
+  {
+   "fieldname": "image_2nd",
+   "fieldtype": "Attach Image",
+   "label": "Image 2nd"
+  },
+  {
+   "fieldname": "image_3rd",
+   "fieldtype": "Attach Image",
+   "label": "Image 3rd"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Table",
+   "label": "Item",
+   "options": "Day Plan item"
+  },
+  {
+   "default": "Disable",
+   "fieldname": "flow_status",
+   "fieldtype": "Select",
+   "label": "Flow Status",
+   "options": "Enable\nDisable\nCompleted"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:12.259623",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Day Plan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

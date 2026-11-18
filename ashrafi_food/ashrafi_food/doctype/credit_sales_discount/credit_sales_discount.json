@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-03 22:11:14.006446",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "qty_from",
+  "qty_to",
+  "percentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "qty_from",
+   "fieldtype": "Float",
+   "label": "Qty From (Kg)"
+  },
+  {
+   "fieldname": "qty_to",
+   "fieldtype": "Float",
+   "label": "Qty To (Kg)"
+  },
+  {
+   "fieldname": "percentage",
+   "fieldtype": "Percent",
+   "label": "Percentage"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-18 14:20:10.327602",
+ "modified_by": "Administrator",
+ "module": "Ashrafi Food",
+ "name": "Credit Sales Discount",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

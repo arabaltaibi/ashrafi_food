@@ -20,38 +20,12 @@ app_license = "MIT"
 # web_include_css = "/assets/ashrafi_food/css/ashrafi_food.css"
 # web_include_js = "/assets/ashrafi_food/js/ashrafi_food.js"
 
-# include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "ashrafi_food/public/scss/website"
-
-# include js, css files in header of web form
-# webform_include_js = {"doctype": "public/js/doctype.js"}
-# webform_include_css = {"doctype": "public/css/doctype.css"}
-
-# include js in page
-# page_js = {"page" : "public/js/file.js"}
-
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
-# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
-# Home Pages
-# ----------
-
-# application home page (will override Website Settings)
-# home_page = "login"
-
-# website user home page (by Role)
-# role_home_page = {
-#	"Role": "home_page"
-# }
-
-# Generators
-# ----------
-
-# automatically create page for each record of this doctype
-# website_generators = ["Web Page"]
+doctype_list_js = {
+	"Delivery Note": "public/js/delivery_note_list.js",
+	"Purchase Receipt": "public/js/purchase_receipt_list.js",
+}
 
 # Installation
 # ------------
@@ -59,123 +33,114 @@ app_license = "MIT"
 # before_install = "ashrafi_food.install.before_install"
 # after_install = "ashrafi_food.install.after_install"
 
-# Uninstallation
-# ------------
-
-# before_uninstall = "ashrafi_food.uninstall.before_uninstall"
-# after_uninstall = "ashrafi_food.uninstall.after_uninstall"
-
-# Desk Notifications
-# ------------------
-# See frappe.core.notifications.get_notification_config
-
-# notification_config = "ashrafi_food.notifications.get_notification_config"
-
-# Permissions
-# -----------
-# Permissions evaluated in scripted ways
-
-# permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
-
 # DocType Class
 # ---------------
-# Override standard doctype classes
-
 # override_doctype_class = {
 #	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
 # ---------------
-# Hook on document methods and events
-
 # doc_events = {
 #	"*": {
 #		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
 #	}
 # }
 
 # Scheduled Tasks
 # ---------------
-
 # scheduler_events = {
-#	"all": [
-#		"ashrafi_food.tasks.all"
-#	],
 #	"daily": [
 #		"ashrafi_food.tasks.daily"
 #	],
-#	"hourly": [
-#		"ashrafi_food.tasks.hourly"
-#	],
-#	"weekly": [
-#		"ashrafi_food.tasks.weekly"
-#	]
-#	"monthly": [
-#		"ashrafi_food.tasks.monthly"
-#	]
 # }
-
-# Testing
-# -------
-
-# before_tests = "ashrafi_food.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
-#
 # override_whitelisted_methods = {
 #	"frappe.desk.doctype.event.event.get_events": "ashrafi_food.event.get_events"
 # }
-#
-# each overriding function accepts a `data` argument;
-# generated from the base implementation of the doctype dashboard,
-# along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-#	"Task": "ashrafi_food.task.get_dashboard_data"
-# }
-
-# exempt linked doctypes from being automatically cancelled
-#
-# auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
 
-# User Data Protection
-# --------------------
+# =====================================================================
+# Fixtures – Ashrafi Food customizations
+# (export with: bench --site af.tboss.info export-fixtures --app ashrafi_food)
+# =====================================================================
 
-user_data_fields = [
-	{
-		"doctype": "{doctype_1}",
-		"filter_by": "{filter_by}",
-		"redact_fields": ["{field_1}", "{field_2}"],
-		"partial": 1,
-	},
-	{
-		"doctype": "{doctype_2}",
-		"filter_by": "{filter_by}",
-		"partial": 1,
-	},
-	{
-		"doctype": "{doctype_3}",
-		"strict": False,
-	},
-	{
-		"doctype": "{doctype_4}"
-	}
+AF_CUSTOM_FIELD_DOCTYPES = [
+	"Address", "Asset", "Asset Repair", "Asset Value Adjustment", "Budget", "Company", "Contact",
+	"Customer", "Customer Group", "Delivery Note", "Delivery Note Item", "Distribution Items",
+	"Distributor Invoice", "GL Entry", "Item", "Item Group", "Journal Entry Account",
+	"Landed Cost Item", "Loyalty Program", "Material Request", "Material Request Item",
+	"Opening Invoice Creation Tool", "Opening Invoice Creation Tool Item", "Payment Entry",
+	"Payment Entry Deduction", "POS Invoice", "POS Invoice Item", "POS Profile", "Project",
+	"Purchase Invoice", "Purchase Invoice Item", "Purchase Order", "Purchase Order Item",
+	"Purchase Receipt", "Purchase Receipt Item", "Purchase Taxes and Charges", "Quotation Item",
+	"Sales Invoice", "Sales Invoice Item", "Sales Order", "Sales Order Item",
+	"Sales Taxes and Charges", "Shipping Rule", "Stock Entry", "Stock Entry Detail",
+	"Stock Reconciliation", "Subscription", "Subscription Plan", "Supplier",
+	"Supplier Quotation Item", "Task", "Warehouse",
 ]
 
-# Authentication and authorization
-# --------------------------------
+AF_PROPERTY_SETTER_DOCTYPES = [
+	"Address", "Budget", "Bulk Payment Entry", "Customer", "Delivery Note", "Delivery Note Item",
+	"Distribution Items", "Distributor Invoice", "Item", "Item Barcode", "Item Price", "Job Card",
+	"Journal Entry", "Journal Entry Account", "Letter Head", "Master Shop Route",
+	"Material Request", "Material Request Item", "Packed Item", "Payment Entry",
+	"Payment Entry Reference", "PDC", "POS Invoice", "POS Invoice Item", "Project",
+	"Purchase Invoice", "Purchase Invoice Item", "Purchase Order", "Purchase Receipt",
+	"Purchase Receipt Item", "Quotation", "Sales Invoice", "Sales Invoice Item", "Sales Order",
+	"Stock Entry", "Stock Entry Detail", "Stock Reconciliation", "Stock Reconciliation Item",
+	"Supplier", "Supplier Quotation", "User",
+]
 
-# auth_hooks = [
-#	"ashrafi_food.auth.validate"
-# ]
+# fields created by the Accounting Dimension "Container" (managed by ERPNext, not exported)
+AF_DIMENSION_FIELDS = ["container"]
 
+# custom field names to skip (filled later if anything overlaps with hr_vfg)
+AF_EXCLUDE_CUSTOM_FIELDS = []
+
+AF_CLIENT_SCRIPTS = [
+	"Purchase Invoice-Form", "Master Shop Route-Form", "Shop Route-Form", "Sales Invoice-Form",
+	"Bulk Payment Entry-Form", "Journal Entry-Form", "PDC-Form", "Material Request-Form",
+	"Item-Form", "Payment Entry-Form", "Delivery Note-Form", "Stock Entry-Form",
+	"Distributor Invoice-Form", "Distributor Invoice-List", "Sales Order-Form",
+]
+
+AF_SERVER_SCRIPTS = [
+	"Create DI on Button Click", "Create Distributer Invoice", "DI route Name",
+	"Journal Entry", "pi mob", "DI Route",
+]
+
+# non-standard (database) reports
+AF_REPORTS = [
+	"Damaged Item Report", "nnk", "sss", "Load Out", "Warehouse Item Qty", "Total Load Out",
+	"test2", "Payment Entry", "Recovery/Current GT Report", "Recovery/Current Report",
+	"Recovery Realization Report", "Accounts Receivable Report",
+]
+
+# non-standard (database) print formats
+AF_PRINT_FORMATS = [
+	"Purchase Order (N)", "SO", "Gate Pass", "Distributor Invoice", "CHECQUE", "Al-barka",
+	"Al-barka Cheque", "JV Print format", "Metro customer", "DC for Customer",
+	"Ashrafi Food Industries (DC)", "AFI Export Pay Entry", "AFI Export Sale Inc",
+	"AFI Export Pur Inv", "AFI Export PI", "AFI Export PR", "AFI Export PO", "test",
+	"Stock Entry New", "Bulk Payment Entry", "Payment Entry", "Payment Voucher",
+	"Payment Entry Standard", "Receipt Voucher", "Purchase Invoice", "Purchase Order",
+	"GRN", "Sales Tax Invoice",
+]
+
+_cf_filters = [["dt", "in", AF_CUSTOM_FIELD_DOCTYPES]]
+if AF_DIMENSION_FIELDS:
+	_cf_filters.append(["fieldname", "not in", AF_DIMENSION_FIELDS])
+if AF_EXCLUDE_CUSTOM_FIELDS:
+	_cf_filters.append(["name", "not in", AF_EXCLUDE_CUSTOM_FIELDS])
+
+fixtures = [
+	{"dt": "Custom Field",    "filters": _cf_filters},
+	{"dt": "Property Setter", "filters": [["doc_type", "in", AF_PROPERTY_SETTER_DOCTYPES]]},
+	{"dt": "Client Script",   "filters": [["name", "in", AF_CLIENT_SCRIPTS]]},
+	{"dt": "Server Script",   "filters": [["name", "in", AF_SERVER_SCRIPTS]]},
+	{"dt": "Report",          "filters": [["name", "in", AF_REPORTS]]},
+	{"dt": "Print Format",    "filters": [["name", "in", AF_PRINT_FORMATS]]},
+]
