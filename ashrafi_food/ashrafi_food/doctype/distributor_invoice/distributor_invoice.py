@@ -8,7 +8,10 @@ from frappe.utils import getdate, add_days, get_time,today
 from frappe import _
 import datetime
 from frappe.core.doctype.sms_settings.sms_settings import send_sms
-from erpnext.hr.doctype.employee.employee import is_holiday
+try:
+    from erpnext.hr.doctype.employee.employee import is_holiday  # v13
+except ImportError:
+    from erpnext.setup.doctype.employee.employee import is_holiday  # v14/v15
 from datetime import timedelta, datetime, date
 
 class DistributorInvoice(Document):

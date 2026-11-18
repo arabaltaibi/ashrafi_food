@@ -7,7 +7,10 @@ from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import flt, getdate
 
-from erpnext.hr.utils import set_employee_name, validate_active_employee
+try:
+    from erpnext.hr.utils import set_employee_name, validate_active_employee  # v13
+except ImportError:
+    from hrms.hr.utils import set_employee_name, validate_active_employee  # v14/v15 (HRMS app)
 
 class ShopRoute(Document):
 	pass
